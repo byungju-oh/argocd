@@ -45,4 +45,4 @@ kind: ConfigMap
 metadata:
   name: nginx-config
 data:
-  BACKEND_SERVER: "$(kubectl get svc flask-app-internal-service -o jsonpath='{.spec.clusterIP}')"
+  BACKEND_SERVER: "$(kubectl get svc flask-app -o jsonpath='{.status.loadBalancer.ingress[0].ip}')"
